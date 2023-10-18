@@ -6,11 +6,13 @@
     text-align: center;
     margin-right: 24px;
     font-weight: 500;
+    
 
     & a {
         display: block;
         padding-block: 16px;
         border-bottom: 1px solid var(--cor-primaria);
+        filter: brightness(125%);
 
         &:first-of-type {
             padding-top: 5px;

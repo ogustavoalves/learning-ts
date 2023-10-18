@@ -1,0 +1,15 @@
+{ 
+    "compilerOptions": {
+        //indica a versão do js
+        "target": "ES2022",
+        //indica a pasta para onde o arquivo compilado será enviado
+        "outDir": "./dist/js",
+        //define que o arquivo não será conpilado caso hajam erros
+        "noEmitOnError": true
+    },
+    //esse comando indica as pastas onde os arquivos ts 
+    //serão buscados para a compilação
+    "include": [
+        "./src/**/*"
+    ]
+}

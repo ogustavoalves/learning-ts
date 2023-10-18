@@ -1,11 +1,13 @@
-var saldo = 3000;
+alert("testando compilação do TS");
+alert("testando dnv");
+let saldo = 3000;
 //pegando o elemento relacionado ao saldo e atribuindo um valor diferente a ele
-var elementoSaldo = document.querySelector(".saldo-valor .valor");
+const elementoSaldo = document.querySelector(".saldo-valor .valor");
 if (elementoSaldo != null) {
     elementoSaldo.textContent = saldo.toString();
 }
 //checando se todos os dados do formulário foram preenchidos
-var elementoFormulario = document.querySelector(".block-nova-transacao form");
+const elementoFormulario = document.querySelector(".block-nova-transacao form");
 elementoFormulario.addEventListener("submit", function (event) {
     event.preventDefault();
     if (!elementoFormulario.checkValidity()) {
@@ -13,12 +15,12 @@ elementoFormulario.addEventListener("submit", function (event) {
         return;
     }
     //pegando os valores inseridos no formulário
-    var inputTipoTransacao = elementoFormulario.querySelector("#tipoTransacao");
-    var inputValor = elementoFormulario.querySelector("#valor");
-    var inputData = elementoFormulario.querySelector("#data");
-    var tipoTransacao = inputTipoTransacao.value;
-    var valor = inputValor.valueAsNumber;
-    var data = new Date(inputData.value);
+    const inputTipoTransacao = elementoFormulario.querySelector("#tipoTransacao");
+    const inputValor = elementoFormulario.querySelector("#valor");
+    const inputData = elementoFormulario.querySelector("#data");
+    let tipoTransacao = inputTipoTransacao.value;
+    let valor = inputValor.valueAsNumber;
+    let data = new Date(inputData.value);
     //checando tipo de transação
     if (tipoTransacao == "Depósito") {
         saldo += valor;
@@ -31,7 +33,7 @@ elementoFormulario.addEventListener("submit", function (event) {
         return;
     }
     elementoSaldo.textContent = saldo.toString();
-    var novaTransacao = {
+    const novaTransacao = {
         tipoTransacao: tipoTransacao,
         valor: valor,
         data: data

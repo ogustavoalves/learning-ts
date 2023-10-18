@@ -1,3 +1,6 @@
+alert("testando compilação do TS")
+alert("testando dnv") 
+
 let saldo = 3000;
 //pegando o elemento relacionado ao saldo e atribuindo um valor diferente a ele
 const elementoSaldo = document.querySelector(".saldo-valor .valor") as HTMLElement;

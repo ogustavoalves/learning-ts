@@ -13,11 +13,13 @@
 
     & .transacoes-group {
         margin-bottom: 16px;
+        filter: brightness(125%);
         
         .mes-group {
             color: var(--cor-secundaria);
-            font-weight: 700;
+            font-weight: 500;
             font-size: var(--fonte-t3);
+            
         }
 
         .transacao-item {
@@ -42,6 +44,8 @@
 
             .data {
                 color: white;
+
+                
             }
 
             &:last-of-type .transacao-info {
