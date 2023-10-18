@@ -5,7 +5,7 @@
     --fonte-tamanho-padrao: 16px;
     --fonte-t1: 25px;
     --fonte-t2: 20px;
-    --fonte-t3: 13px;
+    --fonte-t3: 16px;
     --cor-primaria: #000;
     --cor-secundaria: #47A138;
     --cor-tercearia: #CBCBCB;
@@ -34,7 +34,7 @@ body {
     color: var(--cor-primaria);
     font-weight: 400;
     line-height: 1.5;
-    background-color: var(--cor-quaternaria);
+    background-color: #4b4e53;
     overflow-x: hidden;
     padding-bottom: 24px;
 }
