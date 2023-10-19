@@ -1,5 +1,6 @@
 alert("testando compilação do TS")
 alert("testando dnv") 
+alert("testando dnv2") 
 
 let saldo = 3000;
 //pegando o elemento relacionado ao saldo e atribuindo um valor diferente a ele
