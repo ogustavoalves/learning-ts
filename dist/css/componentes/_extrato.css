@@ -4,7 +4,8 @@
     border-radius: 8px;
     width: 282px;
     margin-left: 24px;
-    
+    filter: brightness(110%);
+
     & h3 {
         font-size: var(--fonte-t1);
         padding: 0;
@@ -16,20 +17,21 @@
         filter: brightness(125%);
         
         .mes-group {
-            color: var(--cor-secundaria);
+            color: white;
             font-weight: 500;
             font-size: var(--fonte-t3);
-            
+            filter: brightness(130%);
         }
 
         .transacao-item {
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
-            
+            filter: brightness(130%);
+
             .transacao-info {
                 width: 180px;
-                border-bottom: 1px solid var(--cor-secundaria);
+                border-bottom: 2px solid white;
                 padding-bottom: 16px;
                 margin-bottom: 16px;
 
@@ -45,7 +47,6 @@
             .data {
                 color: white;
 
-                
             }
 
             &:last-of-type .transacao-info {

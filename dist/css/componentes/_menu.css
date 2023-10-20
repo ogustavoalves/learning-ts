@@ -6,13 +6,13 @@
     text-align: center;
     margin-right: 24px;
     font-weight: 500;
-    
+    filter: brightness(110%);
 
     & a {
         display: block;
         padding-block: 16px;
-        border-bottom: 1px solid var(--cor-primaria);
-        filter: brightness(125%);
+        border-bottom: 2px solid white;
+        filter: brightness(140%);
 
         &:first-of-type {
             padding-top: 5px;
@@ -23,9 +23,13 @@
         }
 
         &.active {
-            color: var(--cor-secundaria);
-            border-bottom-color: var(--cor-secundaria);
+            color: white;
+            border-bottom-color: white;
             font-weight: 700;
+        }
+
+        &:hover {
+            color: white;
         }
     }
 
