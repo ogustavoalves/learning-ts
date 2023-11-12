@@ -3,6 +3,16 @@ import Transacao from "./Transacao.js";
 
 let saldo: number = 3000;
 
+//arrow function: é preciso tratar os dados recebidos para que a data seja novamente de um tipo válido
+const transacoes: Transacao[] = JSON.parse(localStorage.getItem("transacoes"), (key: string, value: string) => { 
+    if (key === "data") {
+        return new Date(value);
+    }
+
+    return value;
+}) || [];
+
+ 
 function debitar(valor: number): void {
     if (valor <= 0) {
         throw new Error("O valor a ser debitado deve ser maior que zero!");
@@ -42,7 +52,12 @@ const Conta = {
             throw new Error("Transação Inválida");
         }
 
-        console.log(novaTransacao);
+
+        //guarda a nova transação no array de transações
+        transacoes.push(novaTransacao)
+        //transforma o JSON em string
+        localStorage.setItem("transacoes", JSON.stringify(transacoes));
+        console.log(transacoes);
     }
 }
 

@@ -1,7 +1,9 @@
-import { TipoTransacao } from "./TipoTransacao.js";
-let saldo = 3000;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var TipoTransacao_js_1 = require("./TipoTransacao.js");
+var saldo = 3000;
 //arrow function: é preciso tratar os dados recebidos para que a data seja novamente de um tipo válido
-const transacoes = JSON.parse(localStorage.getItem("transacoes"), (key, value) => {
+var transacoes = JSON.parse(localStorage.getItem("transacoes"), function (key, value) {
     if (key === "data") {
         return new Date(value);
     }
@@ -22,29 +24,26 @@ function depositar(valor) {
     }
     saldo += valor;
 }
-const Conta = {
-    getSaldo() {
+var Conta = {
+    getSaldo: function () {
         return saldo;
     },
-    getDataAcesso() {
+    getDataAcesso: function () {
         return new Date();
     },
     //checando tipo de transação
-    registrarTransacao(novaTransacao) {
-        if (novaTransacao.tipoTransacao == TipoTransacao.DEPOSITO) {
+    registrarTransacao: function (novaTransacao) {
+        if (novaTransacao.tipoTransacao == TipoTransacao_js_1.TipoTransacao.DEPOSITO) {
             depositar(novaTransacao.valor);
         }
-        else if (novaTransacao.tipoTransacao == TipoTransacao.TRANSFERENCIA || novaTransacao.tipoTransacao == TipoTransacao.PAGAMENTO_BOLETO) {
+        else if (novaTransacao.tipoTransacao == TipoTransacao_js_1.TipoTransacao.TRANSFERENCIA || novaTransacao.tipoTransacao == TipoTransacao_js_1.TipoTransacao.PAGAMENTO_BOLETO) {
             debitar(novaTransacao.valor);
         }
         else {
             throw new Error("Transação Inválida");
         }
-        //guarda a nova transação no array de transações
-        transacoes.push(novaTransacao);
-        //transforma o JSON em string
-        localStorage.setItem("transacoes", JSON.stringify(transacoes));
         console.log(transacoes);
+        localStorage.setItem("transacoes", JSON.stringify(transacoes));
     }
 };
-export default Conta;
+exports.default = Conta;
