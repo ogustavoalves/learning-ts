@@ -1,5 +1,5 @@
 import { formatarMoeda} from "../utils/formatadores.js";
-import Conta from "../types/Contas.js"
+import Conta from "../types/Conta.js"
 
 //pegando o elemento relacionado ao saldo e atribuindo um valor diferente a ele
 export const elementoSaldo = document.querySelector(".saldo-valor .valor") as HTMLElement;

@@ -1,7 +1,10 @@
+import ExtratoComponent from "../components/extrato-component.js";
+import { GrupoTransacao } from "./GrupoTransacao.js";
 import { TipoTransacao } from "./TipoTransacao.js";
 import Transacao from "./Transacao.js";
 
-let saldo: number = 3000;
+
+let saldo: number = JSON.parse(localStorage.getItem("saldo")) || 0;
 
 //arrow function: é preciso tratar os dados recebidos para que a data seja novamente de um tipo válido
 const transacoes: Transacao[] = JSON.parse(localStorage.getItem("transacoes"), (key: string, value: string) => { 
@@ -23,6 +26,7 @@ function debitar(valor: number): void {
     }
 
     saldo -= valor;
+    localStorage.setItem("saldo", saldo.toString())
 }
 
 function depositar(valor: number): void {
@@ -31,7 +35,9 @@ function depositar(valor: number): void {
     }
 
     saldo += valor;
+    localStorage.setItem("saldo", saldo.toString())
 }
+
 
 const Conta = {
     getSaldo() {
@@ -42,13 +48,38 @@ const Conta = {
         return new Date();
     },
 
+    getGruposTransacoes(): GrupoTransacao[] {
+        const gruposTransacoes: GrupoTransacao[] = [];
+        const listaTransacoes: Transacao[] = structuredClone(transacoes);
+        const transacoesOrdenadas: Transacao[] = listaTransacoes.sort((t1, t2) => t2.data.getTime() - t1.data.getTime());
+        let labelAtualGrupoTransacao: string = "";
+
+        for(let transacao of transacoesOrdenadas) {
+            let labelGrupoTransacao: string = transacao.data.toLocaleDateString("pt-br", {month:"long", year:"numeric"})
+            if (labelAtualGrupoTransacao != labelGrupoTransacao) {
+                labelAtualGrupoTransacao = labelGrupoTransacao;
+
+                gruposTransacoes.push({
+                    label: labelAtualGrupoTransacao,
+                    transacoes: []
+                });
+            }
+            gruposTransacoes.at(-1).transacoes.push(transacao);
+        }
+
+        return gruposTransacoes
+    },
+
     //checando tipo de transação
     registrarTransacao(novaTransacao: Transacao): void {     
         if (novaTransacao.tipoTransacao == TipoTransacao.DEPOSITO) {
             depositar(novaTransacao.valor);
-        } else if (novaTransacao.tipoTransacao == TipoTransacao.TRANSFERENCIA || novaTransacao.tipoTransacao == TipoTransacao.PAGAMENTO_BOLETO) {
+        } 
+        else if (novaTransacao.tipoTransacao == TipoTransacao.TRANSFERENCIA || novaTransacao.tipoTransacao == TipoTransacao.PAGAMENTO_BOLETO) {
             debitar(novaTransacao.valor);
-        } else {
+            novaTransacao.valor *= -1;
+        } 
+        else {
             throw new Error("Transação Inválida");
         }
 
@@ -57,7 +88,8 @@ const Conta = {
         transacoes.push(novaTransacao)
         //transforma o JSON em string
         localStorage.setItem("transacoes", JSON.stringify(transacoes));
-        console.log(transacoes);
+        
+        console.log(this.getGruposTransacoes());
     }
 }
 

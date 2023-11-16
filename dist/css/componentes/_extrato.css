@@ -10,6 +10,7 @@
         font-size: var(--fonte-t1);
         padding: 0;
         margin-block: 0 32px;
+        display: block;
     }
 
     & .transacoes-group {
@@ -34,9 +35,10 @@
                 border-bottom: 2px solid white;
                 padding-bottom: 16px;
                 margin-bottom: 16px;
-
+                
+                
                 .tipo {
-                    display: block;
+                    color: white;
                 }
 
                 @media screen and (max-width: 950px) {

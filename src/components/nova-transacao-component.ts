@@ -2,8 +2,9 @@ import Transacao from "../types/Transacao.js";
 import { TipoTransacao } from "../types/TipoTransacao.js";
 import { formatarInformacoes } from "../utils/formatadores.js";
 import { FormatoData } from "../types/FormatoData.js";
-import Conta from "../types/Contas.js"
+import Conta from "../types/Conta.js"
 import SaldoComponent from "./saldo-component.js";
+import ExtratoComponent from "./extrato-component.js";
 
 //checando se todos os dados do formulário foram preenchidos
 const elementoFormulario = document.querySelector(".block-nova-transacao form") as HTMLFormElement;
@@ -22,7 +23,7 @@ elementoFormulario.addEventListener("submit", function (event) {
 
         let tipoTransacao: TipoTransacao = inputTipoTransacao.value as TipoTransacao;
         let valor: number = inputValor.valueAsNumber;
-        let data: Date  = new Date(inputData.value);
+        let data: Date  = new Date(inputData.value + " 00:00:00");
     
         //obj da transação
         const novaTransacao: Transacao = {
@@ -36,6 +37,7 @@ elementoFormulario.addEventListener("submit", function (event) {
         console.log(formatarInformacoes(valor, data, FormatoData.PADRAO))
         
         elementoFormulario.reset();
+        ExtratoComponent.atualizar();
         SaldoComponent.atualizar()
     }
     catch(erro) { alert(erro.message)}

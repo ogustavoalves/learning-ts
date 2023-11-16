@@ -1,6 +1,6 @@
 import { formatarData } from "../utils/formatadores.js";
 import { FormatoData } from "../types/FormatoData.js";
-import Conta from "../types/Contas.js"
+import Conta from "../types/Conta.js"
 
 //pegando e alterando a data de acesso
 const elementoDataAcesso = document.querySelector(".block-saldo time") as HTMLElement;
